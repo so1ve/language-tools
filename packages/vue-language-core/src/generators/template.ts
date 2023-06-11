@@ -189,14 +189,7 @@ export function generate(
 
 			const varName = validTsVar.test(tagName) ? tagName : capitalize(camelize(tagName.replace(/:/g, '-')));
 
-			codes.push(
-				`& __VLS_WithComponent<'${varName}', typeof __VLS_components, `,
-				// order is important: https://github.com/vuejs/language-tools/issues/2010
-				`"${capitalize(camelize(tagName))}", `,
-				`"${camelize(tagName)}", `,
-				`"${tagName}"`,
-				'>\n',
-			);
+			codes.push(`& { '${varName}': typeof __VLS_components['${tagName}'] }\n`);
 
 			data[tagName] = varName;
 		}
