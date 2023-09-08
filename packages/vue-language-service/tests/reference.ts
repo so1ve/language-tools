@@ -67,7 +67,7 @@ function findActions(text: string) {
 
 		const offset = flag.index!;
 		// The definition itself is also counted
-		const count = Number(flag[2]) + 1;
+		const count = Number(flag[2]);
 
 		return {
 			offset,
