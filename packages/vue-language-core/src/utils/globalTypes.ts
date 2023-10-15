@@ -80,7 +80,7 @@ declare function __VLS_asFunctionalComponent<T, K = T extends new (...args: any)
 type __VLS_PickElementEvents<T, EK = Extract<keyof T, \`on\${__VLS_CapitalLetters}\${string}\`>,> = __VLS_Prettify<{
 	[K in EK as K extends \`on\${infer S extends string}\` ? Uncapitalize<S> : never]: Parameters<NonNullable<T[K]>>
 }>;
-declare function __VLS_elementAsFunctionalComponent<T>(t: T): (_: T & Record<string, unknown>, ctx?: any) => { __ctx?: { attrs?: any, expose?: any, slots?: any, emit: __VLS_PickElementEvents<T>, props?: T & Record<string, unknown>; }; };
+declare function __VLS_elementAsFunctionalComponent<T>(t: T): (_: T${vueCompilerOptions.strictTemplates ? '' : ' & Record<string, unknown>'}, ctx?: any) => { __ctx?: { attrs?: any, expose?: any, slots?: any, emit: __VLS_PickElementEvents<T>, props?: T${vueCompilerOptions.strictTemplates ? '' : ' & Record<string, unknown>'}; }; };
 declare function __VLS_functionalComponentArgsRest<T extends (...args: any) => any>(t: T): Parameters<T>['length'] extends 2 ? [any] : [];
 declare function __VLS_pickEvent<E1, E2>(emitEvent: E1, propEvent: E2): __VLS_FillingEventArg<
 	__VLS_PickNotAny<
