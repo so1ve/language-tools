@@ -76,7 +76,11 @@ declare function __VLS_asFunctionalComponent<T, K = T extends new (...args: any)
 	: T extends () => any ? (props: {}, ctx?: any) => ReturnType<T>
 	: T extends (...args: any) => any ? T
 	: (_: {}${vueCompilerOptions.strictTemplates ? '' : ' & Record<string, unknown>'}, ctx?: any) => { __ctx?: { attrs?: any, expose?: any, slots?: any, emit?: any, props?: {}${vueCompilerOptions.strictTemplates ? '' : ' & Record<string, unknown>'} } };
-declare function __VLS_elementAsFunctionalComponent<T>(t: T): (_: T${vueCompilerOptions.strictTemplates ? '' : ' & Record<string, unknown>'}, ctx?: any) => { __ctx?: { attrs?: any, expose?: any, slots?: any, emit?: any, props?: T${vueCompilerOptions.strictTemplates ? '' : ' & Record<string, unknown>'} } };
+	type __VLS_CapitalLetters = 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G' | 'H' | 'I' | 'J' | 'K' | 'L' | 'M' | 'N' | 'O' | 'P' | 'Q' | 'R' | 'S' | 'T' | 'U' | 'V' | 'W' | 'X' | 'Y' | 'Z';
+type __VLS_PickElementEvents<T, EK = Extract<keyof T, \`on\${__VLS_CapitalLetters}\${string}\`>,> = __VLS_Prettify<{
+	[K in EK as K extends \`on\${infer S extends string}\` ? Uncapitalize<S> : never]: Parameters<NonNullable<T[K]>>
+}>;
+declare function __VLS_elementAsFunctionalComponent<T>(t: T): (_: T & Record<string, unknown>, ctx?: any) => { __ctx?: { attrs?: any, expose?: any, slots?: any, emit: __VLS_PickElementEvents<T>, props?: T & Record<string, unknown>; }; };
 declare function __VLS_functionalComponentArgsRest<T extends (...args: any) => any>(t: T): Parameters<T>['length'] extends 2 ? [any] : [];
 declare function __VLS_pickEvent<E1, E2>(emitEvent: E1, propEvent: E2): __VLS_FillingEventArg<
 	__VLS_PickNotAny<
@@ -115,12 +119,12 @@ type __VLS_ConstructorOverloads<T> = __VLS_OverloadUnion<T> extends infer F
 	? { [K in E & string]: (...args: A) => void; }
 	: never
 	: never;
-type __VLS_NormalizeEmits<T> = __VLS_Prettify<
+	type __VLS_NormalizeEmits<T> = __VLS_Prettify<
 	__VLS_UnionToIntersection<
-		__VLS_ConstructorOverloads<T> & {
-			[K in keyof T]: T[K] extends any[] ? { (...args: T[K]): void } : never
-		}
-	>
+		__VLS_ConstructorOverloads<T>
+	> & {
+		[K in keyof T]: T[K] extends any[] ? { (...args: T[K]): void; } : never
+	}
 >;
 `.trim();
 }
