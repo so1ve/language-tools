@@ -517,6 +517,8 @@ declare function defineProp<T>(value?: T | (() => T), required?: boolean, rest?:
 			addVirtualCode('scriptSetup', scriptSetupRanges.importSectionEndOffset);
 		}
 
+		codes.push(['', 'scriptSetup', muggle.getLength(codes) + 1, { diagnostic: true }]);
+
 		if (scriptSetupRanges.props.define?.typeArg && scriptSetupRanges.props.withDefaults?.arg) {
 			// fix https://github.com/vuejs/language-tools/issues/1187
 			codes.push(`const __VLS_withDefaultsArg = (function <T>(t: T) { return t })(`);

@@ -10,5 +10,5 @@
 			]
 		},
 	},
-	"include": [ "**/*" ],
+	"include": [ "**/*", "../tsc/vue3/#625/invalid-syntax.vue.ts" ],
 }

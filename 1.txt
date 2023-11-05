@@ -1,0 +1,32 @@
+
+> @ test C:\Data\Workspace\volar
+> vitest run "tsc"
+
+
+[7m[1m[36m RUN [39m[22m[27m [36mv0.34.6[39m [90mC:/Data/Workspace/volar[39m
+
+[90mstdout[2m | packages/tsc/tests/index.spec.ts[2m > [22m[2mvue-tsc[2m > [22m[2mvue-tsc no errors (vue2)[22m[39m
+/* __placeholder__ */
+
+
+const a = 
+ 35 35
+
+
+[90mstdout[2m | packages/tsc/tests/index.spec.ts[2m > [22m[2mvue-tsc[2m > [22m[2mvue-tsc no errors (vue3)[22m[39m
+/* __placeholder__ */
+
+
+const { defineProps, defineSlots, defineEmits, defineExpose, defineModel, defineOptions, withDefaults, } = await import('vue');
+const a = 
+ 163 163
+
+
+ [32m✓[39m packages/tsc/tests/index.spec.ts [2m ([22m[2m13 tests[22m[2m)[22m[33m 40427[2mms[22m[39m
+ [32m✓[39m packages/tsc/tests/dts.spec.ts [2m ([22m[2m15 tests[22m[2m)[22m[90m 18[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m2 passed[39m[22m[90m (2)[39m
+[2m      Tests [22m [1m[32m28 passed[39m[22m[90m (28)[39m
+[2m   Start at [22m 12:25:02
+[2m   Duration [22m 48.09s[2m (transform 3.46s, setup 1ms, collect 7.22s, tests 40.45s, environment 0ms, prepare 158ms)[22m
+
