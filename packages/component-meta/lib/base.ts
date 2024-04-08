@@ -563,6 +563,8 @@ function createSchemaResolvers(
 		let schema: PropertyMetaSchema[];
 		let declarations: Declaration[];
 
+		console.log(call.getJsDocTags());
+
 		return {
 			name: (typeChecker.getTypeOfSymbolAtLocation(call.parameters[0], symbolNode) as ts.StringLiteralType).value,
 			type: typeChecker.typeToString(subtype),
