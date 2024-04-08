@@ -6,9 +6,9 @@ const msg = ref('');
 </script>
 
 <template>
-  <child @vnode-before-mount=""
-    v-bind="{
-      onBark: ($event) => { msg = $event }
-    }"
-  />
+	<child @vnode-before-mount=""
+		v-bind="{
+			onBark: ($event) => { msg = $event }
+		}"
+	/>
 </template>
