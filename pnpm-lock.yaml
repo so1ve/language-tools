@@ -16,16 +16,13 @@ importers:
         version: 3.5.1(typescript@5.4.5)
       '@tsslint/cli':
         specifier: latest
-        version: 0.0.12(typescript@5.4.5)
+        version: 0.0.13(typescript@5.4.5)
       '@tsslint/config':
         specifier: latest
-        version: 0.0.12
+        version: 0.0.13
       '@volar/language-service':
         specifier: ~2.3.0-alpha.15
         version: 2.3.0-alpha.15
-      '@volar/tsslint-config':
-        specifier: latest
-        version: 0.0.0-20240602(@tsslint/config@0.0.12)
       typescript:
         specifier: latest
         version: 5.4.5
@@ -1064,17 +1061,17 @@ packages:
     resolution: {integrity: sha512-LtoMMhxAlorcGhmFYI+LhPgbPZCkgP6ra1YL604EeF6U98pLlQ3iWIGMdWSC+vWmPBWBNgmDBAhnAobLROJmwg==}
     engines: {node: '>=18'}
 
-  '@tsslint/cli@0.0.12':
-    resolution: {integrity: sha512-Tk93hP6eoPYHoQMGqrmrTas8gfX5CLSqaX9KZBUkx9A3U9/9B2KowOe1bo2vZjXZCIvFKa/8dovr61nmsvFylg==}
+  '@tsslint/cli@0.0.13':
+    resolution: {integrity: sha512-xFroVmBYgjidMBhdZ53AWF0KfbiNgfpvSd45y5GBzB2Ir15iG3yqWjU+3peBB9wEkJ1Uq/DSDjGXIJhWSvX2FA==}
     hasBin: true
     peerDependencies:
       typescript: '*'
 
-  '@tsslint/config@0.0.12':
-    resolution: {integrity: sha512-SCgNA7y4tCvRVGZrb0kTd/XkEyhs11zu4awC9CzFLyzj6DKlJR82oOqPQo6xKM0xEuyl6h2rysF2LJwFPL3PHA==}
+  '@tsslint/config@0.0.13':
+    resolution: {integrity: sha512-WlxkTJYrL+NJyqrn3gVwhVxe5O+//HOKqsepiXHBIs7VIqv/To1vOTk6MmyU+BUD4yniMXrYog33gB6YSiVx7Q==}
 
-  '@tsslint/core@0.0.12':
-    resolution: {integrity: sha512-UkNNGzoX0Kd2FlVO2qzGXd4ZZzBuz34WVrWR+gBTJMo2K1fDV/sSjgNF7tjdeikJg/tgcKk4O6xkBbzdrchESQ==}
+  '@tsslint/core@0.0.13':
+    resolution: {integrity: sha512-BDVT485ibIFkZim2ia0EIvU7U4OyZjKvoHonDqAC/HZX7guT/9H6RKo21nkPfNzwjK1jgBzF3dLSp1I1rZKLpg==}
 
   '@tufjs/canonical-json@2.0.0':
     resolution: {integrity: sha512-yVtV8zsdo8qFHe+/3kw81dSLyF7D576A5cCFCi4X7B39tWT7SekaEFUnvnWJHz+9qO7qJTah1JbrDjWKqFtdWA==}
@@ -1139,11 +1136,6 @@ packages:
 
   '@volar/source-map@2.3.0-alpha.15':
     resolution: {integrity: sha512-DQr3FwhRxtxX4W6BoJkwajWjj6BAF5H/SgtzFaUP9z8txn6Y5oFxZPPDG+3Xwu3pTV3gvVlE7AL5E/G1jUr5Yg==}
-
-  '@volar/tsslint-config@0.0.0-20240602':
-    resolution: {integrity: sha512-dSiDDiFExwKKD+N0cl9hLHL76+X+/a4qltbdb6ayEwu7G5H4aw5Qlm99beDyvO9bpFZFSPdkR5XXqyRYZPKLtA==}
-    peerDependencies:
-      '@tsslint/config': latest
 
   '@volar/typescript@2.3.0-alpha.15':
     resolution: {integrity: sha512-sTzUyqGC1wkzVyY0XZBO5smCPDRvIqxlMTUw7bZebuD/7sGaVfyk9ryE29aG6CLpuYDev/ugpQsKoFVhFaQQ8A==}
@@ -4016,19 +4008,19 @@ snapshots:
 
   '@sindresorhus/merge-streams@2.3.0': {}
 
-  '@tsslint/cli@0.0.12(typescript@5.4.5)':
+  '@tsslint/cli@0.0.13(typescript@5.4.5)':
     dependencies:
       '@clack/prompts': 0.7.0
-      '@tsslint/config': 0.0.12
-      '@tsslint/core': 0.0.12
+      '@tsslint/config': 0.0.13
+      '@tsslint/core': 0.0.13
       glob: 10.4.1
       typescript: 5.4.5
 
-  '@tsslint/config@0.0.12':
+  '@tsslint/config@0.0.13':
     dependencies:
       esbuild: 0.19.12
 
-  '@tsslint/core@0.0.12':
+  '@tsslint/core@0.0.13':
     dependencies:
       error-stack-parser: 2.1.4
       source-map-support: 0.5.21
@@ -4126,10 +4118,6 @@ snapshots:
   '@volar/source-map@2.3.0-alpha.15':
     dependencies:
       muggle-string: 0.4.1
-
-  '@volar/tsslint-config@0.0.0-20240602(@tsslint/config@0.0.12)':
-    dependencies:
-      '@tsslint/config': 0.0.12
 
   '@volar/typescript@2.3.0-alpha.15':
     dependencies:
