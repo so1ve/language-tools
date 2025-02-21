@@ -29,9 +29,10 @@ class NamedPipeServer {
 	connecting = false;
 	projectInfo?: ProjectInfo;
 	containsFileCache = new Map<string, Promise<boolean | undefined | null>>();
-	componentNamesAndProps = new FileMap<
-		Record<string, null | ComponentPropInfo[]>
-	>(false);
+	componentInfo = new FileMap<{
+		names: string[];
+		props: Record<string, ComponentPropInfo[] | null>;
+	}>(false);
 
 	constructor(kind: ts.server.ProjectKind, id: number) {
 		this.path = getServerPath(kind, id);
@@ -54,13 +55,13 @@ class NamedPipeServer {
 	}
 
 	async getComponentProps(fileName: string, tag: string) {
-		const componentAndProps = this.componentNamesAndProps.get(fileName);
-		if (!componentAndProps) {
+		const componentInfo = this.componentInfo.get(fileName);
+		if (!componentInfo) {
 			return;
 		}
-		const props = componentAndProps[tag]
-			?? componentAndProps[camelize(tag)]
-			?? componentAndProps[capitalize(camelize(tag))];
+		const props = componentInfo.props[tag]
+			?? componentInfo.props[camelize(tag)]
+			?? componentInfo.props[capitalize(camelize(tag))];
 		if (props) {
 			return props;
 		}
@@ -145,31 +146,25 @@ class NamedPipeServer {
 		// console.log(`[${type}] ${fileName} ${JSON.stringify(data)}`);
 
 		if (type === 'componentNamesUpdated') {
-			let components = this.componentNamesAndProps.get(fileName);
-			if (!components) {
-				components = {};
-				this.componentNamesAndProps.set(fileName, components);
+			let componentInfo = this.componentInfo.get(fileName);
+			if (!componentInfo) {
+				this.componentInfo.set(fileName, componentInfo = {
+					names: [],
+					props: {},
+				});
 			}
 			const newNames: string[] = data;
-			const newNameSet = new Set(newNames);
-			for (const name in components) {
-				if (!newNameSet.has(name)) {
-					delete components[name];
-				}
-			}
-			for (const name of newNames) {
-				if (!components[name]) {
-					components[name] = null;
-				}
-			}
+			componentInfo.names = newNames;
 		}
 		else if (type === 'componentPropsUpdated') {
-			const components = this.componentNamesAndProps.get(fileName) ?? {};
-			const [name, props]: [
-				name: string,
-				props: ComponentPropInfo[],
-			] = data;
-			components[name] = props;
+			const componentInfo = this.componentInfo.get(fileName);
+			if (componentInfo) {
+				const [name, props]: [
+					name: string,
+					props: ComponentPropInfo[],
+				] = data;
+				componentInfo.props[name] = props;
+			}
 		}
 		else {
 			console.error('Unknown notification type:', type);

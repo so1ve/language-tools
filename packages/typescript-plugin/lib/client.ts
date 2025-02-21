@@ -40,11 +40,11 @@ export async function getComponentNames(fileName: string) {
 	if (!server) {
 		return;
 	}
-	const componentAndProps = server.componentNamesAndProps.get(fileName);
-	if (!componentAndProps) {
+	const componentInfo = server.componentInfo.get(fileName);
+	if (!componentInfo) {
 		return;
 	}
-	return Object.keys(componentAndProps);
+	return componentInfo.names;
 }
 
 export const getElementAttrs = createRequest<
