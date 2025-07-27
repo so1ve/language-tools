@@ -7,10 +7,12 @@ import { codeFeatures } from '../codeFeatures';
 import type { TemplateCodegenContext } from '../template/context';
 import { endOfLine, generateSfcBlockSection, newLine } from '../utils';
 import { generateComponentSelf } from './componentSelf';
-import { createScriptCodegenContext, type ScriptCodegenContext } from './context';
+import { type ScriptCodegenContext } from './context';
 import { generateScriptSetup, generateScriptSetupImports } from './scriptSetup';
 import { generateSrc } from './src';
 import { generateTemplate } from './template';
+
+export * from './context';
 
 export interface ScriptCodegenOptions {
 	ts: typeof ts;
@@ -26,9 +28,10 @@ export interface ScriptCodegenOptions {
 	templateRefNames: Set<string>;
 }
 
-export function* generateScript(options: ScriptCodegenOptions): Generator<Code, ScriptCodegenContext> {
-	const ctx = createScriptCodegenContext(options);
-
+export function* generateScript(
+	options: ScriptCodegenOptions,
+	ctx: ScriptCodegenContext,
+): Generator<Code> {
 	yield* generateGlobalTypesPath(options);
 
 	if (options.sfc.script?.src) {
@@ -148,8 +151,6 @@ export function* generateScript(options: ScriptCodegenOptions): Generator<Code, 
 	if (options.sfc.scriptSetup) {
 		yield ['', 'scriptSetup', options.sfc.scriptSetup.content.length, codeFeatures.verification];
 	}
-
-	return ctx;
 }
 
 function* generateGlobalTypesPath(
