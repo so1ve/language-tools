@@ -304,9 +304,7 @@ function* generateMacros(options: ScriptCodegenOptions): Generator<Code> {
 		yield `// @ts-ignore${newLine}`;
 		yield `declare const { `;
 		for (const macro of Object.keys(options.vueCompilerOptions.macros)) {
-			if (!options.exposed.has(macro)) {
-				yield `${macro}, `;
-			}
+			yield `${macro}, `;
 		}
 		yield `}: typeof import('${options.vueCompilerOptions.lib}')${endOfLine}`;
 	}
